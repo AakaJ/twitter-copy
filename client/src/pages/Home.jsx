@@ -36,7 +36,7 @@ const Home = () => {
 
     const addUser = async () => {
         try{
-            const response = await axios.post("http://localhost:8080/account", addAccount);
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/account`, addAccount);
         }
         catch(error){
             console.error(`Failed adding account to database: ${error}`);
@@ -46,7 +46,7 @@ const Home = () => {
     const findUser = async () => {
         if(user){
             try{
-                const response = await axios.post("http://localhost:8080/account/find", findAccount)
+                const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/account/find`, findAccount)
                 setAccount(response.data.message);
                 // Only add user if no account was found in the response
                 if(isAuthenticated && !response.data.message){

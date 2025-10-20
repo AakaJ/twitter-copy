@@ -36,7 +36,7 @@ const Post = () => {
     setLoading(true);
     setFailed(false);
     try{
-      const response = await axios.get(`http://localhost:8080/post/${postid}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/post/${postid}`);
       setPost(response.data.post);
     }
     catch(error){
@@ -52,7 +52,7 @@ const Post = () => {
     setLoading(true);
     setFailed(false);
     try{
-      const response = await axios.get(`http://localhost:8080/comments/${postid}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/comments/${postid}`);
       setComments(response.data.comments);
     }
     catch(error){
@@ -67,7 +67,7 @@ const Post = () => {
   const postComment = async (e) => {
     e.preventDefault();
     try{
-      const response = await axios.post("http://localhost:8080/comment", values);
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/comment`, values);
       fetchComment();
       setValues({
         postid: postid,

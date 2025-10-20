@@ -15,7 +15,7 @@ const LoginButton = () => {
     const fetchAccountData = async (userId) => {
         try{
             if (!userId) return;
-            const response = await axios.post("http://localhost:8080/account/find", { userid: userId });
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/account/find`, { userid: userId });
             setAccount(response.data.account);
         }
         catch(error){

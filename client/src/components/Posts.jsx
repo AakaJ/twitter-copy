@@ -37,7 +37,7 @@ const Posts = () => {
                 userid: user?.sub,
                 profile_picture: user?.picture
             };
-            const response = await axios.post("http://localhost:8080/post", postData);
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/post`, postData);
             // Clear the post text after successful submission
             setValues(prev => ({ ...prev, postText: "" }));
             // Refresh the posts list
@@ -52,7 +52,7 @@ const Posts = () => {
         setFailed(false);
         setLoading(true);
         try{
-            const response = await axios.get("http://localhost:8080/posts");
+            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/posts`);
             setPosts(response.data.posts)
         }
         catch(error){

@@ -32,7 +32,7 @@ const Profile = () => {
     setLoading(true);
     setFailed(false);
     try{
-      const response = await axios.get(`http://localhost:8080/posts/user/${decodedUserId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/posts/user/${decodedUserId}`);
       setPosts(response.data.posts);
       if (response.data.account) {
         setProfile(response.data.account);

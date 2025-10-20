@@ -25,7 +25,7 @@ const Settings = () => {
         setLoading(true);
         setFailed(false);
         try{
-            const response = await axios.post("http://localhost:8080/account/find", sendUserId)
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/account/find`, sendUserId)
             setAccount(response.data.account);
         }
         catch(error){
@@ -40,7 +40,7 @@ const Settings = () => {
     const updateAccountData = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.put(`http://localhost:8080/account/${userid}`, values);
+            const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/account/${userid}`, values);
             fetchAccountData();
         }
         catch(error){
